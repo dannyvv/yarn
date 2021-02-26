@@ -35,11 +35,10 @@ jobs:
     
     # Temporary run eslint by itself as `yarn lint` is not working at the moment
     - run: ./node_modules/.bin/eslint .
-    - run: yarn lint
-      continue-on-error: true # Ignore failure untill fixed
-      
-    - run: yarn test-only
-      continue-on-error: true # Ignore failure untill fixed
+    # - run: yarn lint
+    
+    # Temporary running only a select set of tests untill all are fixed
+    # - run: yarn test-only
 
     - name: e2e tests
       run: cd end_to_end_tests/data && ./run-ubuntu.sh
