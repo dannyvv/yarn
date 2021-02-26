@@ -10,15 +10,12 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  midgard-yarn:
     strategy:
       matrix:
-        #node-version: [14.x, 12.x, 15.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-        #os: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [14.x]
-        os: [ubuntu-latest]
-        
+        node-version: [14.x, 12.x, 15.x]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+       
     runs-on: ${{ matrix.os }}
     
     steps:
@@ -37,8 +34,5 @@ jobs:
     - run: ./node_modules/.bin/eslint .
     # - run: yarn lint
     
-    # Temporary running only a select set of tests untill all are fixed
+    # Temporary turned off until we have a resonable set that passes
     # - run: yarn test-only
-
-    - name: e2e tests
-      run: cd end_to_end_tests/data && ./run-ubuntu.sh
